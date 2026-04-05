@@ -1,0 +1,2805 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ミライトマッチ｜即戦力ライター・ディレクターを募集・検索できるマッチングサービス</title>
+<meta name="description" content="記事制作をプロに依頼するなら、ライターマッチングサービス「ミライトマッチ」。SEO記事・取材・インタビュー・導入事例・採用広報・書籍執筆まで幅広く対応可能。経験豊富なライター・編集者が多数登録しており、各分野の専門家がE-E-A-Tを満たす高品質なコンテンツを制作します。SEOディレクターには構成作成やキーワード選定も依頼可能。外注が初めての方も、運営スタッフが体制づくりから丁寧にサポート。ライター募集・提案もお任せください。">
+<!-- OGP -->
+<meta property="og:url" content="https://miwrite-match.jp/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ミライトマッチ">
+<meta property="og:description" content="ミライトマッチはプロライターと企業を直接つなぐ、新しいマッチングサービス">
+<meta property="og:site_name" content="ミライトマッチ">
+<meta property="og:image" content="https://miwrite-match.jp/static/ogp.png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/png" href="https://miwrite-match.jp/static/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   Design Guideline Base
+   Primary: #00B9AE / Secondary: #308AE1
+   Sub: #EEF2F7, #B7C7DA, #8E8E8E
+   Alert: #FE4F4F / Shadow: #A4A4A4
+   Font: Noto Sans CJK JP / Helvetica
+   Margins: 8px multiples
+   Container: 1000px / 720px
+======================================== */
+
+:root {
+  --primary: #00B9AE;
+  --primary-dark: #009E95;
+  --primary-light: #E6F9F8;
+  --secondary: #308AE1;
+  --secondary-light: #EBF3FC;
+  --bg-sub: #EEF2F7;
+  --border: #B7C7DA;
+  --text-gray: #8E8E8E;
+  --alert: #FE4F4F;
+  --shadow-color: #A4A4A4;
+  --text-dark: #333333;
+  --text-body: #555555;
+  --white: #FFFFFF;
+  --container-wide: 1000px;
+  --container-narrow: 720px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'Helvetica', sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-dark);
+  background: var(--white);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container */
+.container {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+/* Section */
+.section {
+  padding: 80px 0;
+}
+
+.section--gray {
+  background: var(--bg-sub);
+}
+
+.section--primary-light {
+  background: var(--primary-light);
+}
+
+/* Section Title */
+.section-title {
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+/* ========================================
+   Header (Fixed)
+======================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(164, 164, 164, 0.15);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+.header-logo svg {
+  height: 30px;
+  width: auto;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.header-nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: color 0.2s;
+}
+
+.header-nav a:hover {
+  color: var(--primary);
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 40px;
+  transition: background 0.2s, transform 0.1s;
+  cursor: pointer;
+  border: none;
+}
+
+.header-cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.header-writer-link {
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  border-bottom: 1px dashed var(--primary);
+  padding-bottom: 2px;
+}
+
+/* Hamburger (hidden on PC, shown on SP) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  z-index: 999;
+  flex-direction: column;
+  padding: 16px 24px 24px;
+  gap: 0;
+  max-height: calc(100vh - 72px);
+  overflow-y: auto;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--bg-sub);
+}
+
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu-cta {
+  display: block !important;
+  background: var(--primary);
+  color: var(--white) !important;
+  text-align: center;
+  padding: 14px 24px !important;
+  border-radius: 40px;
+  font-weight: 700 !important;
+  margin-top: 8px;
+  border-bottom: none !important;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* SP Header right group (CTA + hamburger) */
+.header-sp-right {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-sp-cta {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 40px;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.header-sp-cta:hover {
+  background: var(--primary-dark);
+}
+
+/* SP-only line break helper */
+.sp-br { display: none; }
+
+/* ========================================
+   Section 1: First View
+======================================== */
+.fv {
+  margin-top: 72px;
+  padding: 80px 0 40px;
+  background: linear-gradient(135deg, #e6faf9 0%, #dff0fb 30%, #f0f7ff 60%, #e6faf9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.fv::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0,185,174,0.12) 0%, rgba(48,138,225,0.06) 40%, transparent 70%);
+  border-radius: 50%;
+}
+
+.fv::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(48,138,225,0.08) 0%, rgba(0,185,174,0.04) 40%, transparent 70%);
+  border-radius: 50%;
+}
+
+.fv .container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.fv-content {
+  max-width: 580px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.fv-hero-image {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fv-hero-image img {
+  height: 460px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.03));
+}
+
+.fv-target-label {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-left: 3px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.fv-target-sub {
+  font-size: 13px;
+  color: var(--text-body);
+  margin-bottom: 20px;
+}
+
+.fv-main-copy {
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  color: var(--text-dark);
+}
+
+.fv-sub-copy {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+}
+
+.fv-main-copy .highlight {
+  color: var(--primary);
+}
+
+.fv-main-copy .accent {
+  position: relative;
+  display: inline-block;
+}
+
+.fv-main-copy .accent::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 185, 174, 0.2);
+  z-index: -1;
+}
+
+.fv-stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.fv-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-body);
+}
+
+.fv-stat strong {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.fv-free-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 900;
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.fv-free-badge .icon {
+  font-size: 24px;
+}
+
+.fv-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px 40px;
+  border-radius: 48px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 185, 174, 0.3);
+  position: relative;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 185, 174, 0.4);
+}
+
+.btn-primary .arrow {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+.btn-primary:hover .arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 48px;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-light);
+}
+
+.fv-sub-text {
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-top: 12px;
+}
+
+/* Logo Band - Scrolling Marquee */
+.logo-band {
+  padding: 32px 0;
+  background: var(--white);
+  border-top: 1px solid var(--bg-sub);
+  border-bottom: 1px solid var(--bg-sub);
+  overflow: hidden;
+}
+
+.logo-band-text {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  letter-spacing: 0.03em;
+}
+
+.logo-band-track {
+  display: flex;
+  animation: logo-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.logo-band-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-band-set {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding-right: 48px;
+}
+
+.logo-band-text strong {
+  color: var(--primary);
+}
+
+.logo-band-set img {
+  height: 28px;
+  width: auto;
+  max-width: 120px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  object-fit: contain;
+}
+
+.logo-band-set img:hover {
+  opacity: 1;
+}
+
+@keyframes logo-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========================================
+   Section 2: Pain Points
+======================================== */
+.pain-points {
+  padding: 80px 0;
+  background: var(--bg-sub);
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.pain-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px 24px;
+  box-shadow: 0 2px 12px rgba(164, 164, 164, 0.12);
+  position: relative;
+  border: none;
+  transition: transform 0.2s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pain-card:hover {
+  transform: translateY(-4px);
+}
+
+.pain-card-illust {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: var(--bg-sub);
+  flex-shrink: 0;
+}
+
+.pain-card-illust img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pain-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.pain-card-desc {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+.pain-resolve {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.pain-resolve-text {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.pain-resolve-text::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+}
+
+/* ========================================
+   Section 3: 3 Strengths
+======================================== */
+.strengths {
+  padding: 80px 0;
+}
+
+.strength-list {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.strength-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.strength-item:nth-child(even) {
+  direction: rtl;
+}
+
+.strength-item:nth-child(even) > * {
+  direction: ltr;
+}
+
+.strength-number {
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--primary);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.strength-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.strength-desc {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.strength-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+.strength-visual {
+  background: var(--bg-sub);
+  border-radius: 16px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.strength-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ========================================
+   CTA Section (Repeating)
+======================================== */
+.cta-section {
+  padding: 56px 0;
+  background: linear-gradient(135deg, var(--primary) 0%, #00a89e 50%, var(--secondary) 100%);
+  text-align: center;
+}
+
+.cta-section-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.cta-section .btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px 48px;
+  border-radius: 48px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cta-section .btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 16px;
+}
+
+.cta-section-sub-link {
+  display: inline-block;
+  color: var(--white);
+  font-size: 14px;
+  margin-top: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ========================================
+   Section 4: Writer Examples
+======================================== */
+.writers {
+  padding: 80px 0;
+  background: var(--bg-sub);
+}
+
+.writer-slider {
+  display: flex;
+  gap: 24px;
+  margin-top: 48px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-sub);
+}
+
+.writer-slider::-webkit-scrollbar {
+  height: 6px;
+}
+
+.writer-slider::-webkit-scrollbar-track {
+  background: var(--bg-sub);
+  border-radius: 3px;
+}
+
+.writer-slider::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+.writer-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 2px 8px rgba(164, 164, 164, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  min-width: 240px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.writer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(164, 164, 164, 0.15);
+}
+
+.writer-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--primary);
+  font-family: 'Helvetica', sans-serif;
+  overflow: hidden;
+}
+.writer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.writer-avatar--okuno img {
+  object-position: center 25%;
+}
+
+.writer-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.writer-catch {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.writer-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.writer-tag {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ========================================
+   Section 5: Search Experience
+======================================== */
+.search-exp {
+  padding: 80px 0;
+}
+
+.search-box {
+  max-width: 720px;
+  margin: 48px auto 0;
+}
+
+.search-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.search-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--white);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-tag:hover,
+.search-tag.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.search-input-wrap {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 16px 24px;
+  font-size: 16px;
+  border: 2px solid var(--border);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+}
+
+.search-btn {
+  background: var(--primary);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 32px;
+  border: 2px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: var(--primary-dark);
+}
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.search-result-card {
+  background: var(--bg-sub);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-result-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.search-result-info {
+  flex: 1;
+}
+
+.search-result-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.search-result-field {
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+.search-more {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.search-more a {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========================================
+   Section 6: Free Flow
+======================================== */
+.free-flow {
+  padding: 80px 0;
+  background: var(--primary-light);
+}
+
+.flow-steps {
+  display: flex;
+  gap: 0;
+  margin-top: 48px;
+  position: relative;
+  justify-content: center;
+}
+
+.flow-step {
+  text-align: center;
+  flex: 1;
+  max-width: 180px;
+  position: relative;
+}
+
+.flow-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 32px;
+  right: -24px;
+  width: 48px;
+  height: 2px;
+  background: var(--primary);
+}
+
+.flow-step-num {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.flow-step:last-child .flow-step-num {
+  background: var(--secondary);
+}
+
+.flow-step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.flow-step-free {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.flow-step:last-child .flow-step-free {
+  color: var(--secondary);
+}
+
+.flow-note {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.flow-note strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.support-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.support-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  box-shadow: 0 2px 8px rgba(164, 164, 164, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.support-card .check {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+/* Support Callout (below comparison table) */
+.support-callout {
+  margin-top: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.support-callout-arrow {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid var(--primary);
+  margin-left: auto;
+  margin-right: 12%;
+  margin-bottom: 0;
+}
+.support-cards-below {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: var(--primary);
+  border-radius: 16px;
+  padding: 24px 32px;
+  width: 100%;
+}
+.support-cards-below .support-card {
+  background: var(--white);
+  color: var(--text-dark);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  box-shadow: none;
+}
+.support-callout-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  width: 100%;
+}
+
+/* Pricing Examples */
+.pricing-examples {
+  margin-top: 56px;
+  text-align: center;
+}
+.pricing-examples-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.pricing-examples-note {
+  font-size: 14px;
+  color: var(--gray);
+  margin-bottom: 32px;
+}
+.pricing-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pricing-card {
+  background: var(--white);
+  border: 2px solid var(--bg-sub);
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 300px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+.pricing-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.pricing-card-label {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 20px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+.pricing-card-label.accent-label {
+  background: var(--secondary);
+}
+.pricing-card-label.interview-label {
+  background: #E67E22;
+}
+.pricing-card-type {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+.pricing-card-price {
+  margin-bottom: 16px;
+}
+.pricing-card-price .price-num {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+}
+.pricing-card-price .price-unit {
+  font-size: 14px;
+  color: var(--gray);
+  margin-left: 4px;
+}
+.pricing-card-example {
+  font-size: 13px;
+  color: var(--gray);
+  background: var(--bg-sub);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.pricing-card-example strong {
+  color: var(--primary);
+  font-size: 15px;
+}
+.pricing-examples-footnote {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 24px;
+}
+
+/* ========================================
+   Section 7: Comparison
+======================================== */
+.comparison {
+  padding: 80px 0;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 48px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(164, 164, 164, 0.1);
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 20px 16px;
+  font-size: 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--bg-sub);
+}
+
+.compare-table thead th {
+  background: var(--bg-sub);
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.compare-table thead th:last-child {
+  background: var(--primary);
+  color: var(--white);
+  font-size: 16px;
+}
+
+.compare-table tbody td:first-child {
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-dark);
+  background: var(--bg-sub);
+}
+
+.compare-table tbody td:last-child {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========================================
+   Section 8: Case Studies
+======================================== */
+.cases {
+  padding: 80px 0;
+  background: var(--bg-sub);
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.case-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(164, 164, 164, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+}
+
+.case-card-img {
+  height: 200px;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+  overflow: hidden;
+}
+
+.case-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-card-body {
+  padding: 24px;
+}
+
+.case-card-company {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.case-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.case-card-link {
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.case-card-summary {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-top: 8px;
+}
+.case-download-cta {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 15px;
+  color: var(--text);
+}
+.case-download-cta a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* ========================================
+   Section 9: FAQ
+======================================== */
+.faq {
+  padding: 80px 0;
+}
+
+.faq-list {
+  max-width: 720px;
+  margin: 48px auto 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--bg-sub);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  cursor: pointer;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.faq-q-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faq-q-text {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.faq-toggle {
+  font-size: 24px;
+  color: var(--primary);
+  transition: transform 0.3s;
+}
+
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 0 24px 56px;
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+  display: none;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
+}
+
+/* ========================================
+   Section 10: News
+======================================== */
+.news {
+  padding: 64px 0;
+  background: var(--bg-sub);
+}
+
+.news-list {
+  max-width: 720px;
+  margin: 32px auto 0;
+}
+
+.news-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+}
+
+.news-date {
+  font-size: 13px;
+  color: var(--text-gray);
+  flex-shrink: 0;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.news-text {
+  color: var(--text-dark);
+}
+
+.news-text a {
+  color: var(--secondary);
+}
+
+/* ========================================
+   Section 11: Final CTA + Form
+======================================== */
+.final-cta {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f0fffe 0%, #e8f4fd 100%);
+}
+
+.final-cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.final-cta-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.final-cta-sub {
+  font-size: 16px;
+  color: var(--text-body);
+  margin-bottom: 40px;
+}
+
+.form-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(164, 164, 164, 0.15);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-label .optional {
+  font-size: 12px;
+  color: var(--text-gray);
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: var(--primary);
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px;
+  border: none;
+  border-radius: 48px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 185, 174, 0.3);
+  margin-top: 8px;
+}
+
+.form-submit:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.form-note {
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-top: 12px;
+}
+
+.form-sub-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-body);
+}
+
+.form-sub-link a {
+  color: var(--secondary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ========================================
+   Footer
+======================================== */
+.footer {
+  padding: 48px 0 24px;
+  background: var(--text-dark);
+  color: var(--white);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.footer-logo span {
+  color: var(--primary);
+}
+
+.footer-nav {
+  display: flex;
+  gap: 32px;
+}
+
+.footer-nav a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+  color: var(--white);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal a {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Helvetica', sans-serif;
+}
+
+/* ========================================
+   Floating CTA
+======================================== */
+.floating-banner {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.floating-banner:hover {
+  transform: translateY(-3px);
+}
+
+.floating-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #2a2d5e 0%, #1a1d4e 100%);
+  color: var(--white);
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  animation: float-pulse 2s infinite;
+}
+
+.floating-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.floating-banner-free {
+  color: #c8ff00;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.floating-banner-main {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.floating-banner-main strong {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.floating-banner-arrow {
+  font-size: 24px;
+  color: #c8ff00;
+}
+
+@keyframes float-pulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25); }
+  50% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35); }
+}
+
+/* ========================================
+   Responsive (SP)
+======================================== */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .header-sp-right {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .fv-hero-image {
+    display: none;
+  }
+
+  .btn-primary {
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+
+  .btn-secondary {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+
+  .sp-br { display: inline; }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .fv {
+    padding: 56px 0 40px;
+  }
+
+  .fv .container {
+    flex-direction: column;
+  }
+
+  .fv-hero-image {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 24px auto 0;
+  }
+
+  .fv-hero-image img {
+    height: auto;
+    max-width: 90%;
+    max-height: 360px;
+  }
+
+  .fv-main-copy {
+    font-size: 28px;
+  }
+
+  .fv-sub-copy {
+    font-size: 16px;
+  }
+
+  .fv-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fv-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pain-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pain-card-illust {
+    width: 120px;
+    height: 120px;
+  }
+
+  .strength-item {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .strength-item:nth-child(even) {
+    direction: ltr;
+  }
+
+  .strength-visual {
+    height: 200px;
+  }
+
+  .writer-slider {
+    gap: 16px;
+  }
+
+  .writer-card {
+    min-width: 200px;
+  }
+
+  .search-results {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .flow-step:not(:last-child)::after {
+    display: none;
+  }
+
+  .compare-table {
+    font-size: 13px;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 12px 8px;
+  }
+
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section-title {
+    font-size: 22px;
+  }
+
+  .final-cta-title {
+    font-size: 26px;
+  }
+
+  .form-card {
+    padding: 24px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  /* SP Floating Banner - full width bottom bar */
+  .floating-banner {
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+
+  .floating-banner-inner {
+    border-radius: 0;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+
+  .floating-banner-main strong {
+    font-size: 16px;
+  }
+
+  body {
+    padding-bottom: 72px;
+  }
+}
+
+/* ========================================
+   Utility
+======================================== */
+.text-center { text-align: center; }
+.text-primary { color: var(--primary); }
+.text-gray { color: var(--text-gray); }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<!-- ===== Header (Fixed) ===== -->
+<header class="header">
+  <div class="container">
+    <a href="#" class="header-logo">
+      <svg width="148" height="30" viewBox="0 0 148 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M42.4199 9.93604L30.6599 9.44104V6.33604L42.4199 6.83405V9.93604Z" fill="#1BAFA4"/>
+        <path d="M42.4199 17.256L30.6599 16.761V13.656L42.4199 14.154V17.256Z" fill="#1BAFA4"/>
+        <path d="M42.4199 24.576L30.6599 24.081V20.976L42.4199 21.474V24.576Z" fill="#1BAFA4"/>
+        <path d="M60.4199 6.45601H48.6599V9.69601H60.4199V6.45601Z" fill="#1BAFA4"/>
+        <path d="M96.06 13.776H86.94C86.676 13.776 86.46 13.56 86.46 13.296V5.13605H83.22V25.056H86.46V17.376C86.46 17.112 86.676 16.896 86.94 16.896H96.06V13.776Z" fill="#1BAFA4"/>
+        <path d="M60.4199 12.216H48.6689V15.456H56.7C56.964 15.456 57.1799 15.672 57.1799 15.936V17.844C57.1799 17.955 57.1409 18.063 57.0719 18.147L52.56 23.649L54.8909 25.56L60.4229 18.816V12.216H60.4199Z" fill="#1BAFA4"/>
+        <path d="M118.62 14.496H115.98V18.576H118.62V14.496Z" fill="#464545"/>
+        <path d="M122.64 14.496H120V18.576H122.64V14.496Z" fill="#464545"/>
+        <path d="M99.2459 6.15601V9.27601H108.846V11.064C108.846 11.175 108.807 11.283 108.738 11.367L104.916 16.026C104.736 16.245 104.406 16.263 104.205 16.062L102.786 14.643L100.665 16.764L108.981 25.08L111.102 22.959L107.028 18.885C106.854 18.711 106.839 18.432 106.995 18.24L112.083 12.036V6.15601H99.2429H99.2459Z" fill="#464545"/>
+        <path d="M126.66 14.496H124.02V19.314C124.02 19.428 123.978 19.539 123.906 19.626L120.9 23.133L122.955 24.513L126.657 20.1L126.552 20.013H126.66V14.493V14.496Z" fill="#464545"/>
+        <path d="M147.744 15.5281L142.86 12.7081V13.4881C142.86 13.7521 142.644 13.9681 142.38 13.9681H139.38C139.116 13.9681 138.9 13.7521 138.9 13.4881V8.28605C138.9 8.11805 138.99 7.95906 139.134 7.87506L140.76 6.90606V3.42606L131.64 8.85606V12.3361L134.934 10.3741C135.255 10.1821 135.66 10.4131 135.66 10.7851V13.4851C135.66 13.7491 135.444 13.9651 135.18 13.9651H130.14V17.0851H135.18C135.444 17.0851 135.66 17.3011 135.66 17.5651V25.0561H138.9V17.5651C138.9 17.3011 139.116 17.0851 139.38 17.0851H142.38C142.644 17.0851 142.86 17.3011 142.86 17.5651V18.3451L147.744 15.5251V15.5281Z" fill="#464545"/>
+        <path d="M0 0V6.711L14.34 14.988L0 23.268V29.976L25.959 14.988L0 0Z" fill="#1BAFA4"/>
+        <path d="M9.05999 11.94L0 6.71104V23.268L9.05999 18.036V11.94Z" fill="#EDE1DD"/>
+        <path d="M14.3401 14.988L9.06006 11.94V18.036L14.3401 14.988Z" fill="#464545"/>
+        <path d="M77.4598 5.61599L66.7798 11.976V15.456L70.2538 13.386C70.5748 13.194 70.9798 13.425 70.9798 13.797V25.293H74.2198V11.295C74.2198 11.127 74.3098 10.968 74.4538 10.884L77.4598 9.09299V5.61299V5.61599Z" fill="#1BAFA4"/>
+      </svg>
+    </a>
+    <nav class="header-nav">
+      <a href="#features">特長</a>
+      <a href="#pricing">料金</a>
+      <a href="#cases">導入事例</a>
+      <a href="#faq">よくある質問</a>
+      <a href="https://miwrite-match.jp/?for=writer" class="header-writer-link">ライターの方はこちら</a>
+      <a href="https://miwrite-match.jp/search/writer" class="header-cta" style="color:#fff;">無料で探してみる &rarr;</a>
+    </nav>
+    <div class="header-sp-right">
+      <a href="https://miwrite-match.jp/search/writer" class="header-sp-cta">無料でさがす</a>
+      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <a href="#features">特長</a>
+  <a href="#pricing">料金</a>
+  <a href="#cases">導入事例</a>
+  <a href="#faq">よくある質問</a>
+  <a href="https://miwrite-match.jp/?for=writer">ライターの方はこちら</a>
+  <a href="https://miwrite-match.jp/search/writer" class="mobile-menu-cta">無料で探してみる &rarr;</a>
+</div>
+
+<!-- ===== Section 1: First View ===== -->
+<section class="fv">
+  <div class="container">
+    <div class="fv-content">
+      <p class="fv-target-label">コンテンツ制作のリソースや品質にお悩みの方へ</p>
+
+      <h1 class="fv-main-copy">
+        <span class="fv-sub-copy">E-E-A-Tや独自性を強化</span><br>理想のライターが<br><span class="accent">最短即日</span>でみつかる
+      </h1>
+
+      <div class="fv-stats">
+        <div class="fv-stat">マッチング率 <strong>86%</strong></div>
+        <div class="fv-stat">継続率 <strong>95%</strong></div>
+        <div class="fv-stat">利用企業 <strong>700社</strong>以上</div>
+      </div>
+
+      <div class="fv-cta-group">
+        <button class="btn-primary" onclick="location.href='https://miwrite-match.jp/search/writer'">
+          無料で探してみる <span class="arrow">&rarr;</span>
+        </button>
+        <button class="btn-secondary" onclick="location.href='#download'">資料をダウンロードする</button>
+      </div>
+      <p class="fv-sub-text">最短1分で完了。費用は一切かかりません。</p>
+    </div>
+    <div class="fv-hero-image">
+      <img src="fv_person.png" alt="ミライトマッチ" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- Logo Band (Scrolling Marquee) -->
+<div class="logo-band">
+  <p class="logo-band-text">上場企業や大手マーケティング会社など <strong>700社以上</strong> がご利用中</p>
+  <div class="logo-band-track">
+    <div class="logo-band-set">
+      <img src="logo_sms.png" alt="エス・エム・エス">
+      <img src="logo_anabuki.png" alt="穴吹興産">
+      <img src="logo_gmoconnect.png" alt="GMOコネクト">
+      <img src="https://miwrite-match.jp/static/img/logo27_sales_marker.90009fd.svg" alt="SalesMarker">
+      <img src="https://miwrite-match.jp/static/img/logo28_viainnhotels.39750d2.jpg" alt="VIA INN HOTELS">
+      <img src="https://miwrite-match.jp/static/img/logo_anchorman.abdbc17.png" alt="アンカーマン">
+      <img src="https://miwrite-match.jp/static/img/logo_yourroot.4c0d970.png" alt="ユアルート">
+      <img src="https://lh3.googleusercontent.com/d/1Xwm-avKffquNYfi1c6FrkVIJW9Upiwxt=s200" alt="ベーシック">
+      <img src="https://lh3.googleusercontent.com/d/1isRD1GAqDhfcYWPCYY8Pp7EQHHG3zWtq=s200" alt="デジタルトレンズ">
+      <img src="https://lh3.googleusercontent.com/d/1PfFRtvjbHws_zIkEJsSqpmU3zub2AS2r=s200" alt="EXIDEA">
+      <img src="https://lh3.googleusercontent.com/d/1WJ5hs4Os9Va23SYZOGl1kAs8RrtHY_9E=s200" alt="シグニフィ">
+      <img src="https://lh3.googleusercontent.com/d/1hXf6i67olUGD8wt36Kl4Fkj5qsbBpcQT=s200" alt="エバーグリーン">
+      <img src="https://lh3.googleusercontent.com/d/1Bs5YEW6lvTTVkSUhJIwW8U64nGb2VApg=s200" alt="メディアエンジン">
+      <img src="https://lh3.googleusercontent.com/d/1ofjOB8O3G2PPomWGtsuoYusFVBYNls9c=s200" alt="辻・本郷ITコンサルティング">
+      <img src="https://lh3.googleusercontent.com/d/1YETfqu-7zoW1hgbPZXc2zT7ju-OBw5_h=s200" alt="シティコンピュータ">
+      <!-- トークナビ削除 -->
+    </div>
+    <div class="logo-band-set">
+      <img src="logo_sms.png" alt="エス・エム・エス">
+      <img src="logo_anabuki.png" alt="穴吹興産">
+      <img src="logo_gmoconnect.png" alt="GMOコネクト">
+      <img src="https://miwrite-match.jp/static/img/logo27_sales_marker.90009fd.svg" alt="SalesMarker">
+      <img src="https://miwrite-match.jp/static/img/logo28_viainnhotels.39750d2.jpg" alt="VIA INN HOTELS">
+      <img src="https://miwrite-match.jp/static/img/logo_anchorman.abdbc17.png" alt="アンカーマン">
+      <img src="https://miwrite-match.jp/static/img/logo_yourroot.4c0d970.png" alt="ユアルート">
+      <img src="https://lh3.googleusercontent.com/d/1Xwm-avKffquNYfi1c6FrkVIJW9Upiwxt=s200" alt="ベーシック">
+      <img src="https://lh3.googleusercontent.com/d/1isRD1GAqDhfcYWPCYY8Pp7EQHHG3zWtq=s200" alt="デジタルトレンズ">
+      <img src="https://lh3.googleusercontent.com/d/1PfFRtvjbHws_zIkEJsSqpmU3zub2AS2r=s200" alt="EXIDEA">
+      <img src="https://lh3.googleusercontent.com/d/1WJ5hs4Os9Va23SYZOGl1kAs8RrtHY_9E=s200" alt="シグニフィ">
+      <img src="https://lh3.googleusercontent.com/d/1hXf6i67olUGD8wt36Kl4Fkj5qsbBpcQT=s200" alt="エバーグリーン">
+      <img src="https://lh3.googleusercontent.com/d/1Bs5YEW6lvTTVkSUhJIwW8U64nGb2VApg=s200" alt="メディアエンジン">
+      <img src="https://lh3.googleusercontent.com/d/1ofjOB8O3G2PPomWGtsuoYusFVBYNls9c=s200" alt="辻・本郷ITコンサルティング">
+      <img src="https://lh3.googleusercontent.com/d/1YETfqu-7zoW1hgbPZXc2zT7ju-OBw5_h=s200" alt="シティコンピュータ">
+      <!-- トークナビ削除 -->
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 2: Pain Points ===== -->
+<section class="pain-points">
+  <div class="container">
+    <p class="section-subtitle">Problem</p>
+    <h2 class="section-title">こんなお悩み、ありませんか？</h2>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-card-illust">
+          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/szSf346jxZgDtkf1SA-JdcuarGQj6pTn4LGjJ57H8y0nu-87A5NXO4ov6qqk96xWtUjfvsZn7EInGn-JtTBslKJQFZqqCWODo_bmPKgql-dui8rpyb-7JXNO7YWwTOKFKE1v3HYMB8pd41t_B9sw6tfWMFdyKEH9NU0DfPfYKfM" alt="良いライターが見つからないイメージ" loading="lazy">
+        </div>
+        <h3 class="pain-card-title">「良いライターが見つからない...」</h3>
+        <p class="pain-card-desc">クラウドソーシングで募集しても、期待する品質の人材がこない</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-illust">
+          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/vUlcZ6jsvoQbspi9wbjvcJRmIWdyIWkII7dmneUYPIELs-6YrvrJviZpbDeW1Z3Y9iYFLnWmObQjT5v_yBrrAjwUjbByXeq188Siu4o5Qc1BVvTYoQUfUc1ytYAlSwRzugG4MpqVxB5XTTwzcrCivP2FN9jMyGePKoRiEMRDG8c" alt="外注管理が大変なイメージ" loading="lazy">
+        </div>
+        <h3 class="pain-card-title">「外注先が定着しない...」</h3>
+        <p class="pain-card-desc">せっかく見つけたライターが続かず、また探し直しに</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-illust">
+          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/Ca3XsiqknlAtnZkBxMub9ppUsI34tcReIltNCTnAu84jBDy_CHGQ8WtumjeKHzZqr00f8Y5SzNBbh2dQz4kYHwhaBFbMcW3vqfJfeX-DODdpMa2sKzAjPNWx0XBaAZTW8v8E7xSz-8ou4OhmOWn9EFapzswE7Zcn2aOgvJWw4Z0" alt="専門性の高い記事が書けないイメージ" loading="lazy">
+        </div>
+        <h3 class="pain-card-title">「専門性の高い記事が書ける人がいない...」</h3>
+        <p class="pain-card-desc">薬機法・金融・不動産など、専門知識が必要な記事に対応できない</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-illust">
+          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/nD4NgDhDFeC_g1Zd9UOzZqi_2wQE4mVyv8EjvvB_H7EeGoZhw__OkyxcvLohJklg0bZNV6C1EEFFQL4-_AlPJxn4XIe1aLI3dRnFGwSjefbo90mJPMZ_HVHbI9APIFGfBscr0TZ2mlIYcgGfmGVLsZiM_7y6jUEV6rzQzQe73og" alt="管理が煩雑なイメージ" loading="lazy">
+        </div>
+        <h3 class="pain-card-title">「管理が煩雑で手が回らない...」</h3>
+        <p class="pain-card-desc">募集・選定・契約・請求の工数が大きすぎる</p>
+      </div>
+    </div>
+
+    <div class="pain-resolve">
+      <p class="pain-resolve-text">ミライトマッチなら、<br class="sp-br">すべて解決できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 3: 3 Strengths ===== -->
+<section class="strengths" id="features">
+  <div class="container">
+    <p class="section-subtitle">Feature</p>
+    <h2 class="section-title">選ばれる3つの理由</h2>
+
+    <div class="strength-list">
+      <!-- Strength 1 -->
+      <div class="strength-item">
+        <div class="strength-content">
+          <div class="strength-number">01</div>
+          <h3 class="strength-title">最短即日、ぴったりの<br>人材が見つかる</h3>
+          <p class="strength-desc">
+            3,600名の登録ライターから、専属コンシェルジュが最適な人材を提案。
+            洗練された検索システムで自分でも探せます。
+          </p>
+          <div class="strength-badge">マッチング率 86%</div>
+        </div>
+        <div class="strength-visual">
+          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20548/hRTn9543SsXlm4qsC2DzqmB9A6Jke2lbfPGb8HkpCB313PYcQvSthlKBwORlHM40zgJH4FHXW_GucmGjC1Hwx42hGVOtCopL7vH9Q9X4g5Cq4r0S2hVP2DEjbvMpzYy7hz3zF9PoSbDBFMpUlUGrAQV-8HL6nlLy-e7Pjyz2v1U" alt="コンシェルジュがシステムで人材を提案するイメージ" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Strength 2 -->
+      <div class="strength-item">
+        <div class="strength-content">
+          <div class="strength-number">02</div>
+          <h3 class="strength-title">専門家・有資格者に<br>指名して依頼できる</h3>
+          <p class="strength-desc">
+            FP1級、薬剤師、看護師、行政書士、建築士など専門資格を持つライターが多数。
+            E-E-A-T・独自性を担保した記事制作が可能です。
+          </p>
+          <div class="strength-badge">有資格者多数登録</div>
+        </div>
+        <div class="strength-visual">
+          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/5qvzo4svYYYaeZl_-WN7pIG0WtoNX7L9cQbhafHyiuxMjqhz7HmINQ_vRBnlteEn5L4PU6R5gG3OHcZneTPMegjPhvpAnhCWCCDZcxulMYwOmgnzsZzaQgnkWTQq9DBlWNTfwEI2334HiC2RNE8vaRzutW_SP_Ce95rS3x68Gy8" alt="専門家イメージ" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Strength 3 -->
+      <div class="strength-item">
+        <div class="strength-content">
+          <div class="strength-number">03</div>
+          <h3 class="strength-title">募集から請求まで、<br>約80%の工数を削減</h3>
+          <p class="strength-desc">
+            募集・選定・面談調整・契約・請求処理まで代行。
+            一度見つかれば、長く付き合えます。
+          </p>
+          <div class="strength-badge">継続率 95%</div>
+        </div>
+        <div class="strength-visual">
+          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/Gr1rxMGpIwdLb0dmxXQyLNXqiRyjT__Um827gCUFO5tjCK5ts0j8wrLquBiAve3ON8XFIqlxogDVI_w9IDfZlvWcVy6q2NNrg0qiI5Z9mmvHv7r1oUSE9ccgvJtDeFcB_adOlgI4EpDX2Kbx8XS29fRG7pm3WQ9Xmr1D54EfUEY" alt="工数削減イメージ" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA Section 1 ===== -->
+<section class="cta-section">
+  <div class="container">
+    <p class="cta-section-title">完全無料で<br class="sp-br">ライターを探してみませんか？</p>
+    <button class="btn-white" onclick="location.href='https://miwrite-match.jp/search/writer'">無料で探してみる &rarr;</button>
+    <p class="cta-section-sub">登録から人材提案まで、費用は一切かかりません</p>
+    <a href="#download" class="cta-section-sub-link">詳しい資料をダウンロード</a>
+  </div>
+</section>
+
+<!-- ===== Section 4: Writer Examples ===== -->
+<section class="writers">
+  <div class="container">
+    <p class="section-subtitle">Freelance</p>
+    <h2 class="section-title">こんな人材が見つかります</h2>
+
+    <div class="writer-slider">
+      <div class="writer-card">
+        <div class="writer-avatar"><img src="https://miwrite-match.jp/static/img/writer_image_color4.e418f72.png" alt="SIGENO"></div>
+        <p class="writer-name">SIGENO</p>
+        <h3 class="writer-catch">豊富な金融現場での経験。<br>金融特化ライター</h3>
+        <div class="writer-tags">
+          <span class="writer-tag">金融</span>
+          <span class="writer-tag">投資</span>
+          <span class="writer-tag">保険</span>
+        </div>
+      </div>
+
+      <div class="writer-card">
+        <div class="writer-avatar"><img src="https://miwrite-match.jp/static/img/writer_image_color5.d10f46c.jpg" alt="HIRATA"></div>
+        <p class="writer-name">HIRATA</p>
+        <h3 class="writer-catch">実務を活かした専門性。<br>不動産記事500本以上</h3>
+        <div class="writer-tags">
+          <span class="writer-tag">不動産</span>
+          <span class="writer-tag">宅建士</span>
+          <span class="writer-tag">SEO</span>
+        </div>
+      </div>
+
+      <div class="writer-card">
+        <div class="writer-avatar"><img src="https://miwrite-match.jp/static/img/writer_image_color6.cbc1119.jpg" alt="KAWATA"></div>
+        <p class="writer-name">KAWATA</p>
+        <h3 class="writer-catch">看護師・行政書士の資格を持つ<br>医療SEOライター</h3>
+        <div class="writer-tags">
+          <span class="writer-tag">医療</span>
+          <span class="writer-tag">看護師</span>
+          <span class="writer-tag">薬機法</span>
+        </div>
+      </div>
+
+      <div class="writer-card">
+        <div class="writer-avatar"><img src="https://miwrite-match.jp/static/img/writer_image_color7.6a1b2f6.png" alt="MIYAMOTO"></div>
+        <p class="writer-name">MIYAMOTO</p>
+        <h3 class="writer-catch">薬剤師免許を活かした<br>健康美容専門ライター</h3>
+        <div class="writer-tags">
+          <span class="writer-tag">薬剤師</span>
+          <span class="writer-tag">美容</span>
+          <span class="writer-tag">健康</span>
+        </div>
+      </div>
+
+      <div class="writer-card">
+        <div class="writer-avatar"><img src="https://miwrite-match.jp/static/img/writer_image_color8.fbf638b.png" alt="OKA"></div>
+        <p class="writer-name">OKA</p>
+        <h3 class="writer-catch">AI時代にも活躍する<br>SEOコンサルタント</h3>
+        <div class="writer-tags">
+          <span class="writer-tag">SEO</span>
+          <span class="writer-tag">AI</span>
+          <span class="writer-tag">BtoB</span>
+        </div>
+      </div>
+
+      <div class="writer-card">
+        <div class="writer-avatar writer-avatar--okuno"><img src="https://miwrite-match.jp/static/img/writer_image_color9.4fbe47e.jpg" alt="OKUNO"></div>
+        <p class="writer-name">OKUNO</p>
+        <h3 class="writer-catch">SE経験20年。<br>IT・ガジェット系を皮切りに幅広く執筆</h3>
+        <div class="writer-tags">
+          <span class="writer-tag">IT</span>
+          <span class="writer-tag">取材</span>
+          <span class="writer-tag">ガジェット</span>
+        </div>
+      </div>
+
+      <div class="writer-card">
+        <div class="writer-avatar"><img src="https://miwrite-match.jp/static/img/writer_image_color10.07a6bd0.jpg" alt="ENDOU"></div>
+        <p class="writer-name">ENDOU</p>
+        <h3 class="writer-catch">国立大学院卒。<br>化学系に特化したSEOライター</h3>
+        <div class="writer-tags">
+          <span class="writer-tag">化学</span>
+          <span class="writer-tag">研究</span>
+          <span class="writer-tag">取材</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 5: Search Experience ===== -->
+<section class="search-exp">
+  <div class="container">
+    <p class="section-subtitle">Search</p>
+    <h2 class="section-title">どんなライターがいるか、<br>今すぐ検索できます</h2>
+
+    <div class="search-box">
+      <div class="search-tags">
+        <span class="search-tag active">#SaaS</span>
+        <span class="search-tag">#薬剤師</span>
+        <span class="search-tag">#不動産</span>
+        <span class="search-tag">#金融</span>
+        <span class="search-tag">#取材</span>
+        <span class="search-tag">#SEO</span>
+        <span class="search-tag">#BtoB</span>
+        <span class="search-tag">#製造</span>
+      </div>
+
+      <div class="search-input-wrap">
+        <input type="text" class="search-input" placeholder="キーワードでライターを検索（例：SaaS、薬剤師、建築）">
+        <button class="search-btn">検索</button>
+      </div>
+
+      <div class="search-results">
+        <div class="search-result-card">
+          <div class="search-result-avatar">&#x1F464;</div>
+          <div class="search-result-info">
+            <p class="search-result-name">SaaS専門ライター A</p>
+            <p class="search-result-field">SaaS / BtoB / マーケティング</p>
+          </div>
+        </div>
+        <div class="search-result-card">
+          <div class="search-result-avatar">&#x1F464;</div>
+          <div class="search-result-info">
+            <p class="search-result-name">SaaSディレクター B</p>
+            <p class="search-result-field">SaaS / 採用 / HR</p>
+          </div>
+        </div>
+        <div class="search-result-card">
+          <div class="search-result-avatar">&#x1F464;</div>
+          <div class="search-result-info">
+            <p class="search-result-name">IT・SaaSライター C</p>
+            <p class="search-result-field">SaaS / IT / セキュリティ</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-more">
+        <a href="https://miwrite-match.jp/pre_sign_up/client">無料登録で全件検索する &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 6: Free Flow ===== -->
+<section class="free-flow" id="pricing">
+  <div class="container">
+    <p class="section-subtitle">Pricing</p>
+    <h2 class="section-title">ここまで全部、完全無料です。</h2>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <p class="flow-step-title">無料登録</p>
+        <p class="flow-step-free">無料</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <p class="flow-step-title">ライター検索<br>コンシェルジュ相談</p>
+        <p class="flow-step-free">無料</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <p class="flow-step-title">人材提案<br>面談調整</p>
+        <p class="flow-step-free">無料</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <p class="flow-step-title">ライター決定<br>契約</p>
+        <p class="flow-step-free">無料</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">5</div>
+        <p class="flow-step-title">記事発注<br>納品</p>
+        <p class="flow-step-free">ライターへの発注費用のみ</p>
+      </div>
+    </div>
+
+    <p class="flow-note">
+      <strong>手数料0円。</strong>ミライトマッチはライター側から手数料を徴収する仕組みです。<br>
+      何記事発注しても、クライアント企業への手数料は一切かかりません。
+    </p>
+
+    <!-- ラクラク発注プラン 料金目安 -->
+    <div class="pricing-examples">
+      <h3 class="pricing-examples-title">ラクラク発注プラン｜料金目安</h3>
+      <p class="pricing-examples-note">初期費用0円・月額費用0円・単発利用OK。発生するのはライターへの発注費用のみです。</p>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="pricing-card-label">一般記事</div>
+          <div class="pricing-card-type">SEO記事・コラム・ブログなど</div>
+          <div class="pricing-card-price"><span class="price-num">2〜5</span><span class="price-unit">円/文字</span></div>
+          <div class="pricing-card-example">例：3,000文字 × 2円 ＝ <strong>6,000円</strong>/記事</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-card-label accent-label">専門記事</div>
+          <div class="pricing-card-type">金融・医療・法律・不動産など</div>
+          <div class="pricing-card-price"><span class="price-num">4〜10</span><span class="price-unit">円/文字</span></div>
+          <div class="pricing-card-example">例：4,000文字 × 5円 ＝ <strong>20,000円</strong>/記事</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-card-label interview-label">取材記事</div>
+          <div class="pricing-card-type">インタビュー・導入事例など</div>
+          <div class="pricing-card-price"><span class="price-num">15,000〜80,000</span><span class="price-unit">円/記事</span></div>
+          <div class="pricing-card-example">現地取材/オンライン/録音データ提供、など柔軟に調整可</div>
+        </div>
+      </div>
+      <p class="pricing-examples-footnote">※ 上記はあくまで目安です。ライターの経験・専門性・記事の要件によって変動します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA Section 2 ===== -->
+<section class="cta-section">
+  <div class="container">
+    <p class="cta-section-title">予算の心配なし。まずは無料で始めてみませんか？</p>
+    <button class="btn-white" onclick="location.href='https://miwrite-match.jp/search/writer'">無料で探してみる &rarr;</button>
+    <p class="cta-section-sub">登録も利用も無料。お気軽にどうぞ。</p>
+  </div>
+</section>
+
+<!-- ===== Section 7: Comparison ===== -->
+<section class="comparison">
+  <div class="container">
+    <p class="section-subtitle">Compare</p>
+    <h2 class="section-title">なぜミライトマッチが<br class="sp-br">選ばれるのか</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>比較項目</th>
+          <th>クラウドソーシング</th>
+          <th>個人委託</th>
+          <th>ミライトマッチ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>登録人材層</td>
+          <td>初心者～中級者</td>
+          <td>人脈次第</td>
+          <td>中級者～上級者</td>
+        </tr>
+        <tr>
+          <td>人材が見つかるまで</td>
+          <td>1週間〜</td>
+          <td>人脈次第</td>
+          <td>最短即日</td>
+        </tr>
+        <tr>
+          <td>ライターの定着率</td>
+          <td>低い</td>
+          <td>不安定</td>
+          <td>継続率95%</td>
+        </tr>
+        <tr>
+          <td>専門分野の対応</td>
+          <td>限定的</td>
+          <td>限定的</td>
+          <td>有資格者多数</td>
+        </tr>
+        <tr>
+          <td>募集〜契約の手間</td>
+          <td>自社で全対応</td>
+          <td>自社で全対応</td>
+          <td>約80%削減</td>
+        </tr>
+        <tr>
+          <td>源泉徴収の手間</td>
+          <td>自社で全対応</td>
+          <td>自社で全対応</td>
+          <td>100%削減</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ミライトマッチ列への吹き出し付きサポートカード -->
+    <div class="support-callout">
+      <div class="support-callout-arrow"></div>
+      <div class="support-cards-below">
+        <div class="support-card"><span class="check">&#x2714;</span> 募集代行</div>
+        <div class="support-card"><span class="check">&#x2714;</span> 人物提案</div>
+        <div class="support-card"><span class="check">&#x2714;</span> 面談調整</div>
+        <div class="support-card"><span class="check">&#x2714;</span> 契約代行</div>
+        <div class="support-card"><span class="check">&#x2714;</span> 請求処理</div>
+      </div>
+      <p class="support-callout-text">ミライトマッチは、業務委託に依頼するのに面倒な業務をすべて巻き取ります</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 8: Case Studies ===== -->
+<section class="cases" id="cases">
+  <div class="container">
+    <p class="section-subtitle">Case Study</p>
+    <h2 class="section-title">導入企業の声</h2>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-card-img">
+          <img src="https://miwrite-match.jp/static/img/me_interview.10fb4c0.jpeg" alt="メディアエンジン株式会社" loading="lazy">
+        </div>
+        <div class="case-card-body">
+          <p class="case-card-company">メディアエンジン株式会社</p>
+          <h3 class="case-card-title">取材込みの記事作成を1ヶ月で12本！量質ともに大満足</h3>
+          <p class="case-card-summary">取材可能なライターを複数名アサインし、1ヶ月で12本の取材記事を納品。スピードと品質の両立を実現しました。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-img">
+          <img src="anabuki_interview.jpg" alt="穴吹興産株式会社" loading="lazy">
+        </div>
+        <div class="case-card-body">
+          <p class="case-card-company">穴吹興産株式会社</p>
+          <h3 class="case-card-title">専門性や独自性の高い記事制作の体制を実現</h3>
+          <p class="case-card-summary">不動産・住宅分野に精通したライターとマッチング。専門知識を活かした独自性の高い記事制作体制を構築できました。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-img">
+          <img src="https://miwrite-match.jp/static/img/b-by-c.1ec1590.jpeg" alt="B-by-C株式会社" loading="lazy">
+        </div>
+        <div class="case-card-body">
+          <p class="case-card-company">B-by-C株式会社</p>
+          <h3 class="case-card-title">薬事法の知識と執筆スキルでマッチ度200%を実現</h3>
+          <p class="case-card-summary">薬機法に詳しいライターを起用し、法規制に準拠した高品質な記事を安定的に制作できる体制を整えました。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="case-download-cta">詳細な導入事例は<a href="#download">資料ダウンロード</a>からご覧いただけます。</p>
+  </div>
+</section>
+
+<!-- ===== CTA Section 3 ===== -->
+<section class="cta-section">
+  <div class="container">
+    <p class="cta-section-title">まずは無料で、理想のライターを探してみませんか？</p>
+    <button class="btn-white" onclick="location.href='https://miwrite-match.jp/search/writer'">無料で探してみる &rarr;</button>
+    <p class="cta-section-sub">登録は最短30秒。費用は一切かかりません。</p>
+    <a href="#download" class="cta-section-sub-link">資料をダウンロードする</a>
+  </div>
+</section>
+
+<!-- ===== Section 9: FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <p class="section-subtitle">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-question">
+          <span class="faq-q-badge">Q</span>
+          <span class="faq-q-text">本当に無料で利用できるの？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          ラクラク発注プランなら、登録から契約まで完全無料です。手数料もゼロ。ライターへの発注費用のみが発生します。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-badge">Q</span>
+          <span class="faq-q-text">どのくらいで人材が見つかるの？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          最短即日でご提案可能です。コンシェルジュが貴社のニーズをヒアリングし、最適な人材を迅速にマッチングします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-badge">Q</span>
+          <span class="faq-q-text">専門分野のライターはいるの？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          薬剤師、FP1級、建築士、看護師、行政書士など、専門資格を持つライターが多数登録しています。薬機法・金融・不動産・医療など幅広い専門分野に対応可能です。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-badge">Q</span>
+          <span class="faq-q-text">契約や請求処理はどうなるの？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          すべて弊社が代行します。募集・選定・面談調整・契約・請求処理まで、約80%の工数を削減できます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-badge">Q</span>
+          <span class="faq-q-text">ライターはどこまで対応してくれるの？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          ディレクションから入稿まで、一貫して対応できる人材もいます。現地取材や撮影、プレスリリース、書籍執筆などさまざまなコンテンツ制作も対応できる人材がいます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-badge">Q</span>
+          <span class="faq-q-text">途中でやめることはできるの？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          もちろん可能です。違約金等は一切ありません。お気軽にお試しいただけます。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 10: News ===== -->
+<section class="news">
+  <div class="container">
+    <p class="section-subtitle">News</p>
+    <h2 class="section-title">お知らせ</h2>
+
+    <div class="news-list">
+      <a href="https://taishoku.to-next.jp/tenshoku/torisetsu/sekkyakugyou-yametai/" class="news-item" target="_blank">
+        <span class="news-date">2025.09.25</span>
+        <span class="news-text">女性の転職を支援するWebメディア「わたしNEXT」でミライトマッチが紹介されました。</span>
+      </a>
+      <a href="https://interview.miwrite-match.jp/" class="news-item" target="_blank">
+        <span class="news-date">2025.07.24</span>
+        <span class="news-text">ミライトマッチの取材記事作成用のページを公開しました</span>
+      </a>
+      <a href="https://miwrite-match.jp/projects" class="news-item" target="_blank">
+        <span class="news-date">2025.05.08</span>
+        <span class="news-text">ライター募集ページをリリースしました</span>
+      </a>
+      <a href="https://media-radar.jp/contents/case/ITandPlucktice/" class="news-item" target="_blank">
+        <span class="news-date">2025.03.25</span>
+        <span class="news-text">代表の川俣がメディアレーダーにインタビューされました</span>
+      </a>
+      <a href="https://media-radar.jp/video467.html" class="news-item" target="_blank">
+        <span class="news-date">2025.03.13</span>
+        <span class="news-text">代表の川俣が「第17回メディアレーダーWEEK 2025 春」に登壇しました</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 11: 資料ダウンロードフォーム ===== -->
+<section class="final-cta" id="download">
+  <div class="container">
+    <div class="final-cta-inner">
+      <h2 class="final-cta-title">3分で分かるミライトマッチ</h2>
+      <p class="final-cta-sub">サービス概要・料金・導入事例をまとめた資料をお送りします。</p>
+
+      <div class="form-card">
+        <div class="form-group">
+          <label class="form-label">会社名 / 屋号</label>
+          <input type="text" class="form-input" placeholder="株式会社xxxx">
+        </div>
+        <div class="form-group">
+          <label class="form-label">担当者名</label>
+          <input type="text" class="form-input" placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス</label>
+          <input type="email" class="form-input" placeholder="example@market.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">電話番号 <span class="optional">任意</span></label>
+          <input type="tel" class="form-input" placeholder="090-1234-5678">
+        </div>
+        <div class="form-group form-agree">
+          <label><input type="checkbox"> <a href="https://miwrite-match.jp/privacy" target="_blank">プライバシーポリシー</a>に同意する</label>
+        </div>
+        <button class="form-submit">資料ダウンロード</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="148" height="30" viewBox="0 0 148 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M42.4199 9.93604L30.6599 9.44104V6.33604L42.4199 6.83405V9.93604Z" fill="#1BAFA4"/>
+          <path d="M42.4199 17.256L30.6599 16.761V13.656L42.4199 14.154V17.256Z" fill="#1BAFA4"/>
+          <path d="M42.4199 24.576L30.6599 24.081V20.976L42.4199 21.474V24.576Z" fill="#1BAFA4"/>
+          <path d="M60.4199 6.45601H48.6599V9.69601H60.4199V6.45601Z" fill="#1BAFA4"/>
+          <path d="M96.06 13.776H86.94C86.676 13.776 86.46 13.56 86.46 13.296V5.13605H83.22V25.056H86.46V17.376C86.46 17.112 86.676 16.896 86.94 16.896H96.06V13.776Z" fill="#1BAFA4"/>
+          <path d="M60.4199 12.216H48.6689V15.456H56.7C56.964 15.456 57.1799 15.672 57.1799 15.936V17.844C57.1799 17.955 57.1409 18.063 57.0719 18.147L52.56 23.649L54.8909 25.56L60.4229 18.816V12.216H60.4199Z" fill="#1BAFA4"/>
+          <path d="M118.62 14.496H115.98V18.576H118.62V14.496Z" fill="#FFFFFF"/>
+          <path d="M122.64 14.496H120V18.576H122.64V14.496Z" fill="#FFFFFF"/>
+          <path d="M99.2459 6.15601V9.27601H108.846V11.064C108.846 11.175 108.807 11.283 108.738 11.367L104.916 16.026C104.736 16.245 104.406 16.263 104.205 16.062L102.786 14.643L100.665 16.764L108.981 25.08L111.102 22.959L107.028 18.885C106.854 18.711 106.839 18.432 106.995 18.24L112.083 12.036V6.15601H99.2429H99.2459Z" fill="#FFFFFF"/>
+          <path d="M126.66 14.496H124.02V19.314C124.02 19.428 123.978 19.539 123.906 19.626L120.9 23.133L122.955 24.513L126.657 20.1L126.552 20.013H126.66V14.493V14.496Z" fill="#FFFFFF"/>
+          <path d="M147.744 15.5281L142.86 12.7081V13.4881C142.86 13.7521 142.644 13.9681 142.38 13.9681H139.38C139.116 13.9681 138.9 13.7521 138.9 13.4881V8.28605C138.9 8.11805 138.99 7.95906 139.134 7.87506L140.76 6.90606V3.42606L131.64 8.85606V12.3361L134.934 10.3741C135.255 10.1821 135.66 10.4131 135.66 10.7851V13.4851C135.66 13.7491 135.444 13.9651 135.18 13.9651H130.14V17.0851H135.18C135.444 17.0851 135.66 17.3011 135.66 17.5651V25.0561H138.9V17.5651C138.9 17.3011 139.116 17.0851 139.38 17.0851H142.38C142.644 17.0851 142.86 17.3011 142.86 17.5651V18.3451L147.744 15.5251V15.5281Z" fill="#FFFFFF"/>
+          <path d="M0 0V6.711L14.34 14.988L0 23.268V29.976L25.959 14.988L0 0Z" fill="#1BAFA4"/>
+          <path d="M9.05999 11.94L0 6.71104V23.268L9.05999 18.036V11.94Z" fill="#EDE1DD"/>
+          <path d="M14.3401 14.988L9.06006 11.94V18.036L14.3401 14.988Z" fill="#FFFFFF"/>
+          <path d="M77.4598 5.61599L66.7798 11.976V15.456L70.2538 13.386C70.5748 13.194 70.9798 13.425 70.9798 13.797V25.293H74.2198V11.295C74.2198 11.127 74.3098 10.968 74.4538 10.884L77.4598 9.09299V5.61299V5.61599Z" fill="#1BAFA4"/>
+        </svg>
+      </div>
+      <nav class="footer-nav">
+        <a href="#features">特長</a>
+        <a href="#pricing">料金</a>
+        <a href="#cases">導入事例</a>
+        <a href="#faq">よくある質問</a>
+        <a href="https://it-plucktice.com/" target="_blank">運営会社</a>
+        <a href="https://miwrite-match.jp/?for=writer">ライターの方はこちら</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="https://miwrite-match.jp/privacy" target="_blank">プライバシーポリシー</a>
+        <a href="https://miwrite-match.jp/terms/client" target="_blank">利用規約</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 IT&Plucktice Corp.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Floating CTA Banner ===== -->
+<a href="https://miwrite-match.jp/offer" class="floating-banner" target="_blank">
+  <div class="floating-banner-inner">
+    <div class="floating-banner-text">
+      <span class="floating-banner-free">完全無料！</span>
+      <span class="floating-banner-main">スタッフに<strong>ライターを</strong><br><strong>提案してもらう</strong></span>
+    </div>
+    <span class="floating-banner-arrow">&rarr;</span>
+  </div>
+</a>
+
+<!-- ===== JavaScript ===== -->
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+    // Toggle current
+    if (!isOpen) {
+      item.classList.add('open');
+    }
+  });
+});
+
+// Search tag interaction
+document.querySelectorAll('.search-tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    document.querySelectorAll('.search-tag').forEach(t => t.classList.remove('active'));
+    tag.classList.add('active');
+  });
+});
+
+// Header scroll effect
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    header.style.boxShadow = '0 2px 16px rgba(164, 164, 164, 0.2)';
+  } else {
+    header.style.boxShadow = '0 2px 8px rgba(164, 164, 164, 0.15)';
+  }
+});
+
+// Floating CTA visibility (hide at top, show after scroll)
+const floatingCta = document.querySelector('.floating-banner');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    floatingCta.style.opacity = '1';
+    floatingCta.style.pointerEvents = 'auto';
+  } else {
+    floatingCta.style.opacity = '0';
+    floatingCta.style.pointerEvents = 'none';
+  }
+});
+
+// Initialize floating CTA as hidden
+floatingCta.style.opacity = '0';
+floatingCta.style.pointerEvents = 'none';
+floatingCta.style.transition = 'opacity 0.3s';
+
+// Mobile menu: close on link click
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.mobile-menu').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
