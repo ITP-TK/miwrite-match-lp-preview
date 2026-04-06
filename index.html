@@ -912,50 +912,79 @@ a {
   padding: 80px 0;
 }
 
-.search-box {
-  max-width: 720px;
-  margin: 48px auto 0;
+/* Two-column search layout */
+.search-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+  align-items: start;
 }
 
-.search-tags {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.search-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.search-panel {
   background: var(--white);
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  font-size: 15px;
-  font-weight: 500;
-  padding: 8px 20px;
-  border-radius: 24px;
-  cursor: pointer;
-  transition: all 0.2s;
+  border: 1px solid var(--bg-sub);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(164, 164, 164, 0.08);
 }
 
-.search-tag:hover,
-.search-tag.active {
+.search-panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-panel-icon {
+  font-size: 22px;
+}
+
+.search-panel-desc {
+  font-size: 14px;
+  color: var(--text-body);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Category tags */
+.category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  border-radius: 40px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.category-tag:hover {
   background: var(--primary);
   color: var(--white);
 }
 
+/* Keyword search */
 .search-input-wrap {
   display: flex;
   gap: 0;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .search-input {
   flex: 1;
-  padding: 16px 24px;
-  font-size: 16px;
+  padding: 14px 20px;
+  font-size: 15px;
   border: 2px solid var(--border);
   border-right: none;
   border-radius: 8px 0 0 8px;
@@ -970,71 +999,54 @@ a {
 .search-btn {
   background: var(--primary);
   color: var(--white);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
-  padding: 16px 32px;
+  padding: 14px 24px;
   border: 2px solid var(--primary);
   border-radius: 0 8px 8px 0;
   cursor: pointer;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 
 .search-btn:hover {
   background: var(--primary-dark);
 }
 
-.search-results {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+.keyword-examples {
+  margin-bottom: 24px;
 }
 
-.search-result-card {
-  background: var(--bg-sub);
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.search-result-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: var(--primary);
-}
-
-.search-result-info {
-  flex: 1;
-}
-
-.search-result-name {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-dark);
-}
-
-.search-result-field {
+.keyword-examples-label {
   font-size: 12px;
+  font-weight: 700;
   color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.keyword-examples-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword-examples-list span {
+  font-size: 13px;
+  color: var(--text-body);
+  background: var(--bg-sub);
+  padding: 4px 12px;
+  border-radius: 20px;
 }
 
 .search-more {
   text-align: center;
-  margin-top: 32px;
+  margin-top: 0;
 }
 
 .search-more a {
   color: var(--primary);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1878,8 +1890,12 @@ a {
     min-width: 200px;
   }
 
-  .search-results {
+  .search-two-col {
     grid-template-columns: 1fr;
+  }
+
+  .search-panel {
+    padding: 24px;
   }
 
   .flow-steps {
@@ -2295,51 +2311,61 @@ a {
 <section class="search-exp">
   <div class="container">
     <p class="section-subtitle">Search</p>
-    <h2 class="section-title">どんなライターがいるか、<br>今すぐ検索できます</h2>
+    <h2 class="section-title">どんなライターがいるか、<br>今すぐ探せます</h2>
 
-    <div class="search-box">
-      <div class="search-tags">
-        <span class="search-tag active">#SaaS</span>
-        <span class="search-tag">#薬剤師</span>
-        <span class="search-tag">#不動産</span>
-        <span class="search-tag">#金融</span>
-        <span class="search-tag">#取材</span>
-        <span class="search-tag">#SEO</span>
-        <span class="search-tag">#BtoB</span>
-        <span class="search-tag">#製造</span>
-      </div>
-
-      <div class="search-input-wrap">
-        <input type="text" class="search-input" placeholder="キーワードでライターを検索（例：SaaS、薬剤師、建築）">
-        <button class="search-btn">検索</button>
-      </div>
-
-      <div class="search-results">
-        <div class="search-result-card">
-          <div class="search-result-avatar">&#x1F464;</div>
-          <div class="search-result-info">
-            <p class="search-result-name">SaaS専門ライター A</p>
-            <p class="search-result-field">SaaS / BtoB / マーケティング</p>
-          </div>
-        </div>
-        <div class="search-result-card">
-          <div class="search-result-avatar">&#x1F464;</div>
-          <div class="search-result-info">
-            <p class="search-result-name">SaaSディレクター B</p>
-            <p class="search-result-field">SaaS / 採用 / HR</p>
-          </div>
-        </div>
-        <div class="search-result-card">
-          <div class="search-result-avatar">&#x1F464;</div>
-          <div class="search-result-info">
-            <p class="search-result-name">IT・SaaSライター C</p>
-            <p class="search-result-field">SaaS / IT / セキュリティ</p>
-          </div>
+    <div class="search-two-col">
+      <!-- 左: カテゴリから探す -->
+      <div class="search-panel">
+        <h3 class="search-panel-title"><span class="search-panel-icon">&#x1F4C2;</span>カテゴリから探す</h3>
+        <div class="category-tags">
+          <a href="https://miwrite-match.jp/search/writer/sales-writer" class="category-tag">セールスライター</a>
+          <a href="https://miwrite-match.jp/search/writer/seo-director" class="category-tag">SEOディレクター</a>
+          <a href="https://miwrite-match.jp/search/writer/medical-writer" class="category-tag">医療ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/beauty-writer" class="category-tag">美容ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/financial-writer" class="category-tag">金融ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/copywriter" class="category-tag">コピーライター</a>
+          <a href="https://miwrite-match.jp/search/writer/cosmetic-writer" class="category-tag">コスメライター</a>
+          <a href="https://miwrite-match.jp/search/writer/it-writer" class="category-tag">ITライター</a>
+          <a href="https://miwrite-match.jp/search/writer/legal-writer" class="category-tag">法律ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/real-estate-writer" class="category-tag">不動産ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/content-director" class="category-tag">コンテンツディレクター</a>
+          <a href="https://miwrite-match.jp/search/writer/pharmaceutical-and-medical-device-act" class="category-tag">薬機法ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/proofreading" class="category-tag">校正・校閲</a>
+          <a href="https://miwrite-match.jp/search/writer/scenario-writer" class="category-tag">シナリオライター</a>
+          <a href="https://miwrite-match.jp/search/writer/sports-writer" class="category-tag">スポーツライター</a>
+          <a href="https://miwrite-match.jp/search/writer/game-writer" class="category-tag">ゲームライター</a>
+          <a href="https://miwrite-match.jp/search/writer/travel-writer" class="category-tag">旅行ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/fortune-telling-writer" class="category-tag">占いライター</a>
+          <a href="https://miwrite-match.jp/search/writer/railway-writer" class="category-tag">鉄道ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/home-appliance-writer" class="category-tag">家電ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/column-writer" class="category-tag">コラムライター</a>
+          <a href="https://miwrite-match.jp/search/writer/educational-writer" class="category-tag">教育ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/pet-writer" class="category-tag">ペットライター</a>
+          <a href="https://miwrite-match.jp/search/writer/english-writer" class="category-tag">英語ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/gadget-writer" class="category-tag">ガジェットライター</a>
+          <a href="https://miwrite-match.jp/search/writer/love-writer" class="category-tag">恋愛ライター</a>
+          <a href="https://miwrite-match.jp/search/writer/e-books" class="category-tag">電子書籍</a>
+          <a href="https://miwrite-match.jp/search/writer/content-marketing" class="category-tag">コンテンツマーケティング</a>
         </div>
       </div>
 
-      <div class="search-more">
-        <a href="https://miwrite-match.jp/pre_sign_up/client">無料登録で全件検索する &rarr;</a>
+      <!-- 右: キーワードから探す -->
+      <div class="search-panel">
+        <h3 class="search-panel-title"><span class="search-panel-icon">&#x1F50D;</span>キーワードから探す</h3>
+        <p class="search-panel-desc">ジャンル・資格・スキルなど、<br class="sp-br">自由なキーワードで検索できます</p>
+        <div class="search-input-wrap">
+          <input type="text" class="search-input" placeholder="例：SaaS、薬剤師、建築">
+          <button class="search-btn" onclick="location.href='https://miwrite-match.jp/search/writer/'">検索</button>
+        </div>
+        <div class="keyword-examples">
+          <p class="keyword-examples-label">よく検索されるキーワード</p>
+          <div class="keyword-examples-list">
+            <span>SaaS</span><span>薬剤師</span><span>不動産</span><span>金融</span><span>取材</span><span>SEO</span><span>BtoB</span><span>製造</span>
+          </div>
+        </div>
+        <div class="search-more">
+          <a href="https://miwrite-match.jp/search/writer/">ライター検索画面へ &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -2349,7 +2375,7 @@ a {
 <section class="free-flow" id="pricing">
   <div class="container">
     <p class="section-subtitle">Pricing</p>
-    <h2 class="section-title">ここまで全部、完全無料です。</h2>
+    <h2 class="section-title">ここまで全部、<br class="sp-br">完全無料です。</h2>
 
     <div class="flow-steps">
       <div class="flow-step">
@@ -2755,14 +2781,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     if (!isOpen) {
       item.classList.add('open');
     }
-  });
-});
-
-// Search tag interaction
-document.querySelectorAll('.search-tag').forEach(tag => {
-  tag.addEventListener('click', () => {
-    document.querySelectorAll('.search-tag').forEach(t => t.classList.remove('active'));
-    tag.classList.add('active');
   });
 });
 
