@@ -974,6 +974,11 @@ a {
   color: var(--white);
 }
 
+/* Category toggle (hidden on PC) */
+.category-toggle {
+  display: none;
+}
+
 /* Keyword search */
 .search-input-wrap {
   display: flex;
@@ -1898,6 +1903,41 @@ a {
     padding: 24px;
   }
 
+  /* Category fold on SP */
+  .search-panel .category-tags {
+    max-height: 100px;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.3s ease;
+  }
+
+  .search-panel.expanded .category-tags {
+    max-height: 2000px;
+  }
+
+  .search-panel:not(.expanded) .category-tags::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(transparent, var(--white));
+    pointer-events: none;
+  }
+
+  .category-toggle {
+    display: block;
+    margin: 12px auto 0;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 16px;
+  }
+
   .flow-steps {
     flex-direction: column;
     align-items: center;
@@ -2347,6 +2387,7 @@ a {
           <a href="https://miwrite-match.jp/search/writer/e-books" class="category-tag">電子書籍</a>
           <a href="https://miwrite-match.jp/search/writer/content-marketing" class="category-tag">コンテンツマーケティング</a>
         </div>
+        <button class="category-toggle" onclick="this.parentElement.classList.toggle('expanded'); this.textContent = this.parentElement.classList.contains('expanded') ? '閉じる ▲' : 'もっと見る ▼';">もっと見る ▼</button>
       </div>
 
       <!-- 右: キーワードから探す -->
