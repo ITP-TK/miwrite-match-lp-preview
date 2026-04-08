@@ -301,7 +301,7 @@ a {
 ======================================== */
 .fv {
   margin-top: 72px;
-  padding: 80px 0 40px;
+  padding: 40px 0 40px;
   background: linear-gradient(135deg, #e6faf9 0%, #dff0fb 30%, #f0f7ff 60%, #e6faf9 100%);
   position: relative;
   overflow: hidden;
@@ -348,7 +348,8 @@ a {
 .fv-hero-image {
   position: absolute;
   right: 0;
-  bottom: -20px;
+  top: -20px;
+  bottom: auto;
   z-index: 1;
   pointer-events: none;
 }
@@ -361,20 +362,159 @@ a {
 }
 
 .fv-target-label {
-  display: inline-block;
-  background: var(--primary-light);
-  color: var(--primary);
-  font-size: 14px;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-left: 3px solid var(--primary);
-  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  color: var(--secondary);
+  font-size: 18px;
+  font-weight: 900;
+  padding: 4px 0;
+  border: none;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
 }
+.fv-target-slash {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--secondary);
+  display: inline-block;
+}
+.fv-target-slash.left { transform: rotate(-5deg); }
+.fv-target-slash.right { transform: rotate(5deg); }
 
 .fv-target-sub {
   font-size: 13px;
   color: var(--text-body);
   margin-bottom: 20px;
+}
+
+.fv-lead {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.fv-eeat {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.fv-stats-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.fv-stats-row {
+  display: contents;
+}
+
+.fv-stat-wreath {
+  position: relative;
+  width: 144px;
+  height: 144px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('laurel.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.fv-stat-wreath .wreath-l,
+.fv-stat-wreath .wreath-r { display: none; }
+
+.fv-stat-wreath .fv-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 80px;
+}
+
+.fv-stat-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1;
+}
+
+.fv-stat-num small { font-size: 18px; }
+
+.fv-stat-label {
+  font-size: 12px;
+  color: var(--text-body);
+  font-weight: 700;
+}
+
+.fv-subcopy {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.fv-sub-text-badge {
+  display: inline-block;
+  background: #FFF4D6;
+  color: #B8860B;
+  font-weight: 900;
+  padding: 2px 10px;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+
+.fv-sub-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 14px;
+}
+.fv-sub-text strong { color: var(--primary); font-size: 17px; }
+.fv-sub-text-check {
+  display: inline-block;
+  width: 18px; height: 18px;
+  line-height: 18px; text-align: center;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 900;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.btn-primary, .btn-secondary { padding: 14px 32px !important; font-size: 16px !important; }
+
+.pricing-section { padding: 80px 0 100px; }
+.fv { padding-top: 24px !important; }
+.fv-lead { white-space: nowrap; }
+
+/* 日本語の不自然な改行（孤立文字）防止 */
+h1, h2, h3, .fv-lead, .fv-main-copy, .section-title, .section-lead, .cta-section-title, .pricing-examples-note, .pricing-examples-footnote {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+
+.section-lead {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-body);
+  margin: -16px 0 32px;
 }
 
 .fv-main-copy {
@@ -577,63 +717,59 @@ a {
    Section 2: Pain Points
 ======================================== */
 .pain-points {
-  padding: 80px 0;
+  padding: 56px 0;
   background: var(--bg-sub);
 }
 
 .pain-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-  margin-bottom: 48px;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pain-card {
   background: var(--white);
-  border-radius: 16px;
-  padding: 32px 24px 24px;
-  box-shadow: 0 2px 12px rgba(164, 164, 164, 0.12);
-  position: relative;
-  border: none;
-  transition: transform 0.2s;
-  text-align: center;
+  border-radius: 12px;
+  padding: 20px 16px;
+  box-shadow: 0 2px 8px rgba(164, 164, 164, 0.1);
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 12px;
+  transition: transform 0.2s;
 }
 
-.pain-card:hover {
-  transform: translateY(-4px);
-}
+.pain-card:hover { transform: translateY(-2px); }
 
-.pain-card-illust {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-bottom: 20px;
-  background: var(--bg-sub);
+.pain-x {
   flex-shrink: 0;
-}
-
-.pain-card-illust img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FE4F4F;
+  color: #fff;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }
 
 .pain-card-title {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 8px;
+  margin: 0;
+  line-height: 1.4;
 }
 
-.pain-card-desc {
-  font-size: 15px;
-  color: var(--text-gray);
-  line-height: 1.6;
+.pain-free {
+  color: #FE4F4F;
+  font-size: 1.15em;
 }
 
 .pain-resolve {
@@ -940,8 +1076,13 @@ a {
 }
 
 .search-panel-icon {
-  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  color: var(--primary);
 }
+.search-panel-icon svg { width: 100%; height: 100%; }
 
 .search-panel-desc {
   font-size: 14px;
@@ -1238,9 +1379,13 @@ a {
   border-radius: 16px;
   padding: 32px 24px;
   width: 300px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   transition: box-shadow 0.2s;
 }
+.pricing-card-example { margin-top: auto; }
 .pricing-card:hover {
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
@@ -1842,37 +1987,75 @@ a {
   }
 
   .fv-main-copy {
-    font-size: 28px;
+    font-size: 34px;
+    margin-bottom: 12px;
   }
 
-  .fv-sub-copy {
-    font-size: 16px;
-  }
+  .fv-target-label { font-size: 13px; padding: 6px 12px; }
+  .fv-lead { font-size: 17px; margin-bottom: 10px; }
+  .fv-eeat { font-size: 13px; margin-bottom: 14px; }
 
-  .fv-stats {
-    flex-direction: column;
-    gap: 8px;
+  .fv-stats-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
   }
+  .fv-stats-row {
+    display: contents;
+  }
+  .fv-stat-wreath {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .fv-stat-num { font-size: 20px !important; }
+  .fv-stat-num small { font-size: 11px !important; }
+  .fv-stat-label { font-size: 10px !important; }
+  .fv {
+    padding: 24px 0 32px !important;
+  }
+  .fv-target-label { margin-bottom: 6px; font-size: 15px !important; padding: 6px 10px !important; white-space: nowrap; }
+  .fv-lead { margin-bottom: 8px; font-size: 14px; white-space: normal !important; }
+  .fv-main-copy { margin-bottom: 10px; font-size: 30px; }
+  .fv-hero-image { display: none; }
+  .fv-stats-row.center { justify-content: center; }
+  .fv-stat-wreath .wreath-l,
+  .fv-stat-wreath .wreath-r { width: 30px; height: 60px; }
+  .fv-stat-num { font-size: 26px; }
+  .fv-stat-num small { font-size: 14px; }
+  .fv-stat-label { font-size: 11px; }
+  .fv-stats-row { gap: 16px; }
+
+  .fv-subcopy { font-size: 16px; margin-bottom: 12px; }
 
   .fv-cta-group {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
   .btn-primary,
   .btn-secondary {
     justify-content: center;
     width: 100%;
+    font-size: 16px;
+    padding: 14px 24px;
   }
+
+  .fv-sub-text { font-size: 12px; margin-top: 8px; }
+  .fv-sub-text-badge { font-size: 12px; padding: 2px 8px; }
 
   .pain-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .pain-card-illust {
-    width: 120px;
-    height: 120px;
-  }
+  .pain-card { padding: 14px 14px; }
+  .pain-card-title { font-size: 15px; }
+  .pain-x { width: 26px; height: 26px; font-size: 16px; }
+  .pain-resolve-text { font-size: 18px; }
 
   .strength-item {
     grid-template-columns: 1fr;
@@ -1940,8 +2123,14 @@ a {
 
   .flow-steps {
     flex-direction: column;
-    align-items: center;
-    gap: 24px;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .flow-step {
+    width: 100% !important;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .flow-step:not(:last-child)::after {
@@ -2052,6 +2241,7 @@ a {
     </a>
     <nav class="header-nav">
       <a href="#features">特長</a>
+      <a href="#howto">使い方</a>
       <a href="#pricing">料金</a>
       <a href="#cases">導入事例</a>
       <a href="#faq">よくある質問</a>
@@ -2069,6 +2259,7 @@ a {
 
 <div class="mobile-menu">
   <a href="#features">特長</a>
+  <a href="#howto">使い方</a>
   <a href="#pricing">料金</a>
   <a href="#cases">導入事例</a>
   <a href="#faq">よくある質問</a>
@@ -2080,25 +2271,42 @@ a {
 <section class="fv">
   <div class="container">
     <div class="fv-content">
-      <p class="fv-target-label">コンテンツ制作のリソースや品質にお悩みの方へ</p>
+      <p class="fv-target-label"><span class="fv-target-slash left">\</span>専門性・独自性を重視する制作担当の方へ<span class="fv-target-slash right">/</span></p>
+      <p class="fv-lead">記事制作をプロに依頼するなら<br class="sp-br">国内最大級のライターマッチングサービス</p>
 
       <h1 class="fv-main-copy">
-        <span class="fv-sub-copy">E-E-A-Tや独自性を強化</span><br>理想のライターが<br><span class="accent">最短即日</span>でみつかる
+        理想のライターが<br><span class="accent">最短即日・完全無料</span>でみつかる
       </h1>
 
-      <div class="fv-stats">
-        <div class="fv-stat">マッチング率 <strong>86%</strong></div>
-        <div class="fv-stat">継続率 <strong>95%</strong></div>
-        <div class="fv-stat">利用企業 <strong>700社</strong>以上</div>
+      <div class="fv-stats-inner">
+        <div class="fv-stats-row">
+          <div class="fv-stat-wreath">
+            <svg class="wreath-l" viewBox="0 0 60 120" aria-hidden="true"><defs><path id="leafL" d="M0 0 Q2 -8 8 -10 Q14 -8 16 0 Q14 2 8 2 Q2 2 0 0 Z"/></defs><path d="M50 10 Q10 60 50 110" fill="none" stroke="#8B6914" stroke-width="1.3"/><g fill="#D4AF37" stroke="#8B6914" stroke-width="0.5"><use href="#leafL" transform="translate(46,14) rotate(-115)"/><use href="#leafL" transform="translate(46,14) rotate(-65)"/><use href="#leafL" transform="translate(38,23) rotate(-110)"/><use href="#leafL" transform="translate(38,23) rotate(-60)"/><use href="#leafL" transform="translate(30,34) rotate(-105)"/><use href="#leafL" transform="translate(30,34) rotate(-55)"/><use href="#leafL" transform="translate(23,46) rotate(-100)"/><use href="#leafL" transform="translate(23,46) rotate(-50)"/><use href="#leafL" transform="translate(19,58) rotate(-95)"/><use href="#leafL" transform="translate(19,58) rotate(-45)"/><use href="#leafL" transform="translate(19,70) rotate(-95)"/><use href="#leafL" transform="translate(19,70) rotate(-45)"/><use href="#leafL" transform="translate(23,82) rotate(-100)"/><use href="#leafL" transform="translate(23,82) rotate(-50)"/><use href="#leafL" transform="translate(30,94) rotate(-105)"/><use href="#leafL" transform="translate(30,94) rotate(-55)"/><use href="#leafL" transform="translate(38,104) rotate(-110)"/><use href="#leafL" transform="translate(38,104) rotate(-60)"/><use href="#leafL" transform="translate(46,112) rotate(-115)"/><use href="#leafL" transform="translate(46,112) rotate(-65)"/></g></svg>
+            <div class="fv-stat"><span class="fv-stat-num">86<small>%</small></span><span class="fv-stat-label">マッチング率</span></div>
+            <svg class="wreath-r" viewBox="0 0 60 120" aria-hidden="true"><defs><path id="leafR" d="M0 0 Q-2 -8 -8 -10 Q-14 -8 -16 0 Q-14 2 -8 2 Q-2 2 0 0 Z"/></defs><path d="M10 10 Q50 60 10 110" fill="none" stroke="#8B6914" stroke-width="1.3"/><g fill="#D4AF37" stroke="#8B6914" stroke-width="0.5"><use href="#leafR" transform="translate(14,14) rotate(115)"/><use href="#leafR" transform="translate(14,14) rotate(65)"/><use href="#leafR" transform="translate(22,23) rotate(110)"/><use href="#leafR" transform="translate(22,23) rotate(60)"/><use href="#leafR" transform="translate(30,34) rotate(105)"/><use href="#leafR" transform="translate(30,34) rotate(55)"/><use href="#leafR" transform="translate(37,46) rotate(100)"/><use href="#leafR" transform="translate(37,46) rotate(50)"/><use href="#leafR" transform="translate(41,58) rotate(95)"/><use href="#leafR" transform="translate(41,58) rotate(45)"/><use href="#leafR" transform="translate(41,70) rotate(95)"/><use href="#leafR" transform="translate(41,70) rotate(45)"/><use href="#leafR" transform="translate(37,82) rotate(100)"/><use href="#leafR" transform="translate(37,82) rotate(50)"/><use href="#leafR" transform="translate(30,94) rotate(105)"/><use href="#leafR" transform="translate(30,94) rotate(55)"/><use href="#leafR" transform="translate(22,104) rotate(110)"/><use href="#leafR" transform="translate(22,104) rotate(60)"/><use href="#leafR" transform="translate(14,112) rotate(115)"/><use href="#leafR" transform="translate(14,112) rotate(65)"/></g></svg>
+          </div>
+          <div class="fv-stat-wreath">
+            <svg class="wreath-l" viewBox="0 0 60 120" aria-hidden="true"><defs><path id="leafL" d="M0 0 Q2 -8 8 -10 Q14 -8 16 0 Q14 2 8 2 Q2 2 0 0 Z"/></defs><path d="M50 10 Q10 60 50 110" fill="none" stroke="#8B6914" stroke-width="1.3"/><g fill="#D4AF37" stroke="#8B6914" stroke-width="0.5"><use href="#leafL" transform="translate(46,14) rotate(-115)"/><use href="#leafL" transform="translate(46,14) rotate(-65)"/><use href="#leafL" transform="translate(38,23) rotate(-110)"/><use href="#leafL" transform="translate(38,23) rotate(-60)"/><use href="#leafL" transform="translate(30,34) rotate(-105)"/><use href="#leafL" transform="translate(30,34) rotate(-55)"/><use href="#leafL" transform="translate(23,46) rotate(-100)"/><use href="#leafL" transform="translate(23,46) rotate(-50)"/><use href="#leafL" transform="translate(19,58) rotate(-95)"/><use href="#leafL" transform="translate(19,58) rotate(-45)"/><use href="#leafL" transform="translate(19,70) rotate(-95)"/><use href="#leafL" transform="translate(19,70) rotate(-45)"/><use href="#leafL" transform="translate(23,82) rotate(-100)"/><use href="#leafL" transform="translate(23,82) rotate(-50)"/><use href="#leafL" transform="translate(30,94) rotate(-105)"/><use href="#leafL" transform="translate(30,94) rotate(-55)"/><use href="#leafL" transform="translate(38,104) rotate(-110)"/><use href="#leafL" transform="translate(38,104) rotate(-60)"/><use href="#leafL" transform="translate(46,112) rotate(-115)"/><use href="#leafL" transform="translate(46,112) rotate(-65)"/></g></svg>
+            <div class="fv-stat"><span class="fv-stat-num">95<small>%</small></span><span class="fv-stat-label">継続率</span></div>
+            <svg class="wreath-r" viewBox="0 0 60 120" aria-hidden="true"><defs><path id="leafR" d="M0 0 Q-2 -8 -8 -10 Q-14 -8 -16 0 Q-14 2 -8 2 Q-2 2 0 0 Z"/></defs><path d="M10 10 Q50 60 10 110" fill="none" stroke="#8B6914" stroke-width="1.3"/><g fill="#D4AF37" stroke="#8B6914" stroke-width="0.5"><use href="#leafR" transform="translate(14,14) rotate(115)"/><use href="#leafR" transform="translate(14,14) rotate(65)"/><use href="#leafR" transform="translate(22,23) rotate(110)"/><use href="#leafR" transform="translate(22,23) rotate(60)"/><use href="#leafR" transform="translate(30,34) rotate(105)"/><use href="#leafR" transform="translate(30,34) rotate(55)"/><use href="#leafR" transform="translate(37,46) rotate(100)"/><use href="#leafR" transform="translate(37,46) rotate(50)"/><use href="#leafR" transform="translate(41,58) rotate(95)"/><use href="#leafR" transform="translate(41,58) rotate(45)"/><use href="#leafR" transform="translate(41,70) rotate(95)"/><use href="#leafR" transform="translate(41,70) rotate(45)"/><use href="#leafR" transform="translate(37,82) rotate(100)"/><use href="#leafR" transform="translate(37,82) rotate(50)"/><use href="#leafR" transform="translate(30,94) rotate(105)"/><use href="#leafR" transform="translate(30,94) rotate(55)"/><use href="#leafR" transform="translate(22,104) rotate(110)"/><use href="#leafR" transform="translate(22,104) rotate(60)"/><use href="#leafR" transform="translate(14,112) rotate(115)"/><use href="#leafR" transform="translate(14,112) rotate(65)"/></g></svg>
+          </div>
+        </div>
+        <div class="fv-stats-row center">
+          <div class="fv-stat-wreath">
+            <svg class="wreath-l" viewBox="0 0 60 120" aria-hidden="true"><defs><path id="leafL" d="M0 0 Q2 -8 8 -10 Q14 -8 16 0 Q14 2 8 2 Q2 2 0 0 Z"/></defs><path d="M50 10 Q10 60 50 110" fill="none" stroke="#8B6914" stroke-width="1.3"/><g fill="#D4AF37" stroke="#8B6914" stroke-width="0.5"><use href="#leafL" transform="translate(46,14) rotate(-115)"/><use href="#leafL" transform="translate(46,14) rotate(-65)"/><use href="#leafL" transform="translate(38,23) rotate(-110)"/><use href="#leafL" transform="translate(38,23) rotate(-60)"/><use href="#leafL" transform="translate(30,34) rotate(-105)"/><use href="#leafL" transform="translate(30,34) rotate(-55)"/><use href="#leafL" transform="translate(23,46) rotate(-100)"/><use href="#leafL" transform="translate(23,46) rotate(-50)"/><use href="#leafL" transform="translate(19,58) rotate(-95)"/><use href="#leafL" transform="translate(19,58) rotate(-45)"/><use href="#leafL" transform="translate(19,70) rotate(-95)"/><use href="#leafL" transform="translate(19,70) rotate(-45)"/><use href="#leafL" transform="translate(23,82) rotate(-100)"/><use href="#leafL" transform="translate(23,82) rotate(-50)"/><use href="#leafL" transform="translate(30,94) rotate(-105)"/><use href="#leafL" transform="translate(30,94) rotate(-55)"/><use href="#leafL" transform="translate(38,104) rotate(-110)"/><use href="#leafL" transform="translate(38,104) rotate(-60)"/><use href="#leafL" transform="translate(46,112) rotate(-115)"/><use href="#leafL" transform="translate(46,112) rotate(-65)"/></g></svg>
+            <div class="fv-stat"><span class="fv-stat-num">700<small>社+</small></span><span class="fv-stat-label">利用企業</span></div>
+            <svg class="wreath-r" viewBox="0 0 60 120" aria-hidden="true"><defs><path id="leafR" d="M0 0 Q-2 -8 -8 -10 Q-14 -8 -16 0 Q-14 2 -8 2 Q-2 2 0 0 Z"/></defs><path d="M10 10 Q50 60 10 110" fill="none" stroke="#8B6914" stroke-width="1.3"/><g fill="#D4AF37" stroke="#8B6914" stroke-width="0.5"><use href="#leafR" transform="translate(14,14) rotate(115)"/><use href="#leafR" transform="translate(14,14) rotate(65)"/><use href="#leafR" transform="translate(22,23) rotate(110)"/><use href="#leafR" transform="translate(22,23) rotate(60)"/><use href="#leafR" transform="translate(30,34) rotate(105)"/><use href="#leafR" transform="translate(30,34) rotate(55)"/><use href="#leafR" transform="translate(37,46) rotate(100)"/><use href="#leafR" transform="translate(37,46) rotate(50)"/><use href="#leafR" transform="translate(41,58) rotate(95)"/><use href="#leafR" transform="translate(41,58) rotate(45)"/><use href="#leafR" transform="translate(41,70) rotate(95)"/><use href="#leafR" transform="translate(41,70) rotate(45)"/><use href="#leafR" transform="translate(37,82) rotate(100)"/><use href="#leafR" transform="translate(37,82) rotate(50)"/><use href="#leafR" transform="translate(30,94) rotate(105)"/><use href="#leafR" transform="translate(30,94) rotate(55)"/><use href="#leafR" transform="translate(22,104) rotate(110)"/><use href="#leafR" transform="translate(22,104) rotate(60)"/><use href="#leafR" transform="translate(14,112) rotate(115)"/><use href="#leafR" transform="translate(14,112) rotate(65)"/></g></svg>
+          </div>
+        </div>
       </div>
 
+      <p class="fv-sub-text"><span class="fv-sub-text-check">&#x2714;</span> 最短<strong>1分</strong>で完了 ／ <span class="fv-sub-text-check">&#x2714;</span> 費用は<strong>一切</strong>かかりません</p>
       <div class="fv-cta-group">
         <button class="btn-primary" onclick="location.href='https://miwrite-match.jp/search/writer'">
           無料で探してみる <span class="arrow">&rarr;</span>
         </button>
         <button class="btn-secondary" onclick="location.href='#download'">資料をダウンロードする</button>
       </div>
-      <p class="fv-sub-text">最短1分で完了。費用は一切かかりません。</p>
     </div>
     <div class="fv-hero-image">
       <img src="fv_person.png" alt="ミライトマッチ" loading="eager">
@@ -2156,38 +2364,14 @@ a {
     <h2 class="section-title">こんなお悩み、ありませんか？</h2>
 
     <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-card-illust">
-          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/szSf346jxZgDtkf1SA-JdcuarGQj6pTn4LGjJ57H8y0nu-87A5NXO4ov6qqk96xWtUjfvsZn7EInGn-JtTBslKJQFZqqCWODo_bmPKgql-dui8rpyb-7JXNO7YWwTOKFKE1v3HYMB8pd41t_B9sw6tfWMFdyKEH9NU0DfPfYKfM" alt="良いライターが見つからないイメージ" loading="lazy">
-        </div>
-        <h3 class="pain-card-title">「良いライターが見つからない...」</h3>
-        <p class="pain-card-desc">クラウドソーシングで募集しても、期待する品質の人材がこない</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-card-illust">
-          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/vUlcZ6jsvoQbspi9wbjvcJRmIWdyIWkII7dmneUYPIELs-6YrvrJviZpbDeW1Z3Y9iYFLnWmObQjT5v_yBrrAjwUjbByXeq188Siu4o5Qc1BVvTYoQUfUc1ytYAlSwRzugG4MpqVxB5XTTwzcrCivP2FN9jMyGePKoRiEMRDG8c" alt="外注管理が大変なイメージ" loading="lazy">
-        </div>
-        <h3 class="pain-card-title">「外注先が定着しない...」</h3>
-        <p class="pain-card-desc">せっかく見つけたライターが続かず、また探し直しに</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-card-illust">
-          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/Ca3XsiqknlAtnZkBxMub9ppUsI34tcReIltNCTnAu84jBDy_CHGQ8WtumjeKHzZqr00f8Y5SzNBbh2dQz4kYHwhaBFbMcW3vqfJfeX-DODdpMa2sKzAjPNWx0XBaAZTW8v8E7xSz-8ou4OhmOWn9EFapzswE7Zcn2aOgvJWw4Z0" alt="専門性の高い記事が書けないイメージ" loading="lazy">
-        </div>
-        <h3 class="pain-card-title">「専門性の高い記事が書ける人がいない...」</h3>
-        <p class="pain-card-desc">薬機法・金融・不動産など、専門知識が必要な記事に対応できない</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-card-illust">
-          <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20546/nD4NgDhDFeC_g1Zd9UOzZqi_2wQE4mVyv8EjvvB_H7EeGoZhw__OkyxcvLohJklg0bZNV6C1EEFFQL4-_AlPJxn4XIe1aLI3dRnFGwSjefbo90mJPMZ_HVHbI9APIFGfBscr0TZ2mlIYcgGfmGVLsZiM_7y6jUEV6rzQzQe73og" alt="管理が煩雑なイメージ" loading="lazy">
-        </div>
-        <h3 class="pain-card-title">「管理が煩雑で手が回らない...」</h3>
-        <p class="pain-card-desc">募集・選定・契約・請求の工数が大きすぎる</p>
-      </div>
+      <div class="pain-card"><span class="pain-x">×</span><h3 class="pain-card-title">良いライターがいない</h3></div>
+      <div class="pain-card"><span class="pain-x">×</span><h3 class="pain-card-title">外注先がコロコロ変わる</h3></div>
+      <div class="pain-card"><span class="pain-x">×</span><h3 class="pain-card-title">専門性のある記事が書けない</h3></div>
+      <div class="pain-card"><span class="pain-x">×</span><h3 class="pain-card-title">管理業務が多すぎる</h3></div>
     </div>
 
     <div class="pain-resolve">
-      <p class="pain-resolve-text">ミライトマッチなら、<br class="sp-br">すべて解決できます。</p>
+      <p class="pain-resolve-text">ミライトマッチなら、<br class="sp-br">すべて<span class="pain-free">&quot;無料&quot;</span>で解決できます。</p>
     </div>
   </div>
 </section>
@@ -2356,7 +2540,7 @@ a {
     <div class="search-two-col">
       <!-- 左: カテゴリから探す -->
       <div class="search-panel">
-        <h3 class="search-panel-title"><span class="search-panel-icon">&#x1F4C2;</span>カテゴリから探す</h3>
+        <h3 class="search-panel-title"><span class="search-panel-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z"/></svg></span>カテゴリから探す</h3>
         <div class="category-tags">
           <a href="https://miwrite-match.jp/search/writer/sales-writer" class="category-tag">セールスライター</a>
           <a href="https://miwrite-match.jp/search/writer/seo-director" class="category-tag">SEOディレクター</a>
@@ -2392,7 +2576,7 @@ a {
 
       <!-- 右: キーワードから探す -->
       <div class="search-panel">
-        <h3 class="search-panel-title"><span class="search-panel-icon">&#x1F50D;</span>キーワードから探す</h3>
+        <h3 class="search-panel-title"><span class="search-panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>キーワードから探す</h3>
         <p class="search-panel-desc">ジャンル・資格・スキルなど、<br class="sp-br">自由なキーワードで検索できます</p>
         <div class="search-input-wrap">
           <input type="text" class="search-input" placeholder="例：SaaS、薬剤師、建築">
@@ -2412,21 +2596,22 @@ a {
   </div>
 </section>
 
-<!-- ===== Section 6: Free Flow ===== -->
-<section class="free-flow" id="pricing">
+<!-- ===== Section 6: How to use ===== -->
+<section class="free-flow" id="howto">
   <div class="container">
-    <p class="section-subtitle">Pricing</p>
-    <h2 class="section-title">ここまで全部、<br class="sp-br">完全無料です。</h2>
+    <p class="section-subtitle">How to use</p>
+    <h2 class="section-title">ご利用の流れ</h2>
+    <p class="section-lead">発注が決まるまで完全無料です。</p>
 
     <div class="flow-steps">
       <div class="flow-step">
         <div class="flow-step-num">1</div>
-        <p class="flow-step-title">無料登録</p>
+        <p class="flow-step-title">無料登録<br>ライター検索</p>
         <p class="flow-step-free">無料</p>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">2</div>
-        <p class="flow-step-title">ライター検索<br>コンシェルジュ相談</p>
+        <p class="flow-step-title">打合せ<br>コンシェルジュ相談</p>
         <p class="flow-step-free">無料</p>
       </div>
       <div class="flow-step">
@@ -2450,32 +2635,37 @@ a {
       <strong>手数料0円。</strong>ミライトマッチはライター側から手数料を徴収する仕組みです。<br>
       何記事発注しても、クライアント企業への手数料は一切かかりません。
     </p>
+  </div>
+</section>
 
-    <!-- ラクラク発注プラン 料金目安 -->
+<!-- ===== Section 6b: Pricing ===== -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <p class="section-subtitle">Pricing</p>
+    <h2 class="section-title">発注料金目安</h2>
     <div class="pricing-examples">
-      <h3 class="pricing-examples-title">ラクラク発注プラン｜料金目安</h3>
-      <p class="pricing-examples-note">初期費用0円・月額費用0円・単発利用OK。発生するのはライターへの発注費用のみです。</p>
+      <p class="pricing-examples-note">初期費用0円・月額費用0円・単発利用OK。発生するのはライターへの発注費用のみ（弊社手数料込）です。</p>
       <div class="pricing-cards">
         <div class="pricing-card">
           <div class="pricing-card-label">一般記事</div>
           <div class="pricing-card-type">SEO記事・コラム・ブログなど</div>
           <div class="pricing-card-price"><span class="price-num">2〜5</span><span class="price-unit">円/文字</span></div>
-          <div class="pricing-card-example">例：3,000文字 × 2円 ＝ <strong>6,000円</strong>/記事</div>
+          <div class="pricing-card-example">例：3,000文字 × 2円<br>＝ <strong>6,000円</strong>/記事</div>
         </div>
         <div class="pricing-card">
           <div class="pricing-card-label accent-label">専門記事</div>
           <div class="pricing-card-type">金融・医療・法律・不動産など</div>
           <div class="pricing-card-price"><span class="price-num">4〜10</span><span class="price-unit">円/文字</span></div>
-          <div class="pricing-card-example">例：4,000文字 × 5円 ＝ <strong>20,000円</strong>/記事</div>
+          <div class="pricing-card-example">例：4,000文字 × 5円<br>＝ <strong>20,000円</strong>/記事</div>
         </div>
         <div class="pricing-card">
           <div class="pricing-card-label interview-label">取材記事</div>
           <div class="pricing-card-type">インタビュー・導入事例など</div>
-          <div class="pricing-card-price"><span class="price-num">15,000〜80,000</span><span class="price-unit">円/記事</span></div>
+          <div class="pricing-card-price"><span class="price-num">1.5〜8</span><span class="price-unit">万円/記事</span></div>
           <div class="pricing-card-example">現地取材/オンライン/録音データ提供、など柔軟に調整可</div>
         </div>
       </div>
-      <p class="pricing-examples-footnote">※ 上記はあくまで目安です。ライターの経験・専門性・記事の要件によって変動します。</p>
+      <p class="pricing-examples-footnote">※ 上記はあくまで目安です。ライターの経験・専門性・記事の要件によって変動します。<br>※ 契約形態は、貴社とミライトマッチ間の業務委託契約になります。</p>
     </div>
   </div>
 </section>
@@ -2486,6 +2676,7 @@ a {
     <p class="cta-section-title">予算の心配なし。まずは無料で始めてみませんか？</p>
     <button class="btn-white" onclick="location.href='https://miwrite-match.jp/search/writer'">無料で探してみる &rarr;</button>
     <p class="cta-section-sub">登録も利用も無料。お気軽にどうぞ。</p>
+    <a href="#download" class="cta-section-sub-link">料金表付き資料をダウンロードする</a>
   </div>
 </section>
 
@@ -2628,7 +2819,7 @@ a {
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-answer">
-          ラクラク発注プランなら、登録から契約まで完全無料です。手数料もゼロ。ライターへの発注費用のみが発生します。
+          ラクラク発注プランなら、登録から契約成立まで完全無料です。手数料が別途かかることはなく、発注費用のみでご利用いただけます。
         </div>
       </div>
 
@@ -2749,10 +2940,17 @@ a {
           <label><input type="checkbox"> <a href="https://miwrite-match.jp/privacy" target="_blank">プライバシーポリシー</a>に同意する</label>
         </div>
         <button class="form-submit">資料ダウンロード</button>
+        <p class="form-meeting-link"><a href="https://miwrite-match.jp/contacts" target="_blank" rel="noopener">打合せを希望の方はこちら &rarr;</a></p>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+.form-meeting-link { text-align: center; margin-top: 16px; font-size: 14px; }
+.form-meeting-link a { color: var(--primary); text-decoration: underline; font-weight: 700; }
+.form-meeting-link a:hover { color: var(--primary-dark); }
+</style>
 
 <!-- ===== Footer ===== -->
 <footer class="footer">
